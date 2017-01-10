@@ -1,0 +1,33 @@
+{
+  "name": "retriever.js",
+  "version": "1.0.0",
+  "description": "Turn your lost visitors in new customers with this simple javascript library.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bloodbee/retriever.js.git"
+  },
+  "keywords": [
+    "lost",
+    "visitors",
+    "customers",
+    "visitor",
+    "customer",
+    "retriever",
+    "retrieve",
+    "js",
+    "website"
+  ],
+  "author": "Bloodbee <mathieu_dufour@hotmail.fr> (Mathieu Dufour)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bloodbee/retriever.js/issues"
+  },
+  "homepage": "https://github.com/bloodbee/retriever.js#readme",
+  "dependencies": {
+    "jquery": "3.1.1"
+  }
+}
