@@ -1,6 +1,6 @@
 {
   "name": "retriever.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turn your lost visitors in new customers with this simple javascript library.",
   "main": "src/index.js",
   "scripts": {
@@ -26,5 +26,5 @@
   "bugs": {
     "url": "https://github.com/bloodbee/retriever.js/issues"
   },
-  "homepage": "https://github.com/bloodbee/retriever.js#readme",
+  "homepage": "https://github.com/bloodbee/retriever.js#readme"
 }
