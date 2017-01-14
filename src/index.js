@@ -58,13 +58,15 @@
             'font-weight': '400',
         },
 
+        content : "Thanks for using retriever.js !",
         contentStyle: {
             'text-align': 'center',
             'font-weight': '500',
             'font-size': '20px'
         },
 
-        link: "http://www.pykto.fr",
+        linkUrl: "#",
+        link: "Click here",
         linkStyle: {
             'padding': '5px',
             'background-color': 'black',
@@ -85,20 +87,51 @@
 
     };
 
+    // set config
+    Retriever.prototype.setConfig = function(config = null) {
+        // initialize our retrieve
+        if (config != undefined && config != null) {
+            that.defaults = config;
+        }
+    };
 
-    Retriever.prototype.retrieve = function(config) {
-        var conf = {};
+
+    // launch the retrieve function
+    Retriever.prototype.retrieve = function(config = null) {
+        let conf = {};
         // initialize our retrieve
         if (config === undefined || config === null) {
-            conf = this.defaults;
+            conf = that.defaults;
         } else {
             // merge configs
-            Object.assign(conf, config, this.defaults);
+            Object.assign(conf, config, that.defaults);
         }
 
-        console.log(conf);
+        // Now on mouseleave container event
+        var container = conf.container;
+        container.onmouseleave = function(event) {
+            that.popup(conf);
+        };
 
-        var container = conf.container; // by default it's the body
+    };
+
+    Retriever.prototype.close = function() {
+        // remove old popup
+        var oldPopup = document.getElementById('retrieve-popup');
+        if (oldPopup)
+            document.body.removeChild(oldPopup);
+    };
+
+
+    // display popup
+    Retriever.prototype.popup = function(config = null) {
+
+        // remove old popup
+        that.close();
+
+        var conf = that.defaults;
+        if (config)
+            conf = config;
 
         var popupStyle = '';
         for (var prop in conf.popupStyle) {
@@ -125,62 +158,55 @@
         }
 
         var link = conf.link;
-
-        // Now on mouseleave container event
-
-        container.onmouseout = function() {
-            // remove old popup
-            var oldPopup = document.getElementById('retrieve-popup');
-            if (oldPopup)
-                document.body.removeChild(oldPopup);
-
-            // create the elements
-            var retrievePopup = document.createElement("DIV");
-            var retrieveContent = document.createElement("P");
-            var retrieveContentText = document.createTextNode("You are sure you want to go away ? We got a -25% redeem code for all website, just for you !");
-            var retrieveLinkDiv = document.createElement("SPAN");
-            var retrieveLink = document.createElement("A");
-
-            // set attributes and styles and whatever
-            retrievePopup.setAttribute('id', 'retrieve-popup');
-            retrievePopup.style.cssText = popupStyle;
-
-            retrieveContent.setAttribute('id', 'retrieve-content');
-            retrieveContent.style.cssText = contentStyle;
-
-            retrieveLinkDiv.setAttribute('id', 'retrieve-link');
-            retrieveLinkDiv.style.cssText = linkStyle;
-
-            retrieveLink.setAttribute('href', link);
-            retrieveLink.textContent = 'Click here !';
-
-            // construct the popup element
-            retrieveLinkDiv.appendChild(retrieveLink);
-            retrieveContent.appendChild(retrieveContentText);
-
-            if (conf.closeButton) {
-                var retrieveClose = document.createElement("BUTTON");
-
-                retrieveClose.setAttribute('id', 'retrieve-close');
-                retrieveClose.textContent = 'close';
-                retrieveClose.style.cssText = closeStyle;
-
-                retrievePopup.appendChild(retrieveClose);
-
-                retrieveClose.onclick = function() {
-                    document.body.removeChild(retrievePopup);
-                };
-            }
-
-            retrievePopup.appendChild(retrieveContent);
-            retrievePopup.appendChild(retrieveLinkDiv);
+        var linkUrl = conf.linkUrl;
+        var content = conf.content;
 
 
-            // add it to body
-            document.body.appendChild(retrievePopup);
 
-        };
+        // create the elements
+        var retrievePopup = document.createElement("DIV");
+        var retrieveContent = document.createElement("P");
+        var retrieveContentText = document.createTextNode(content);
+        var retrieveLinkDiv = document.createElement("SPAN");
+        var retrieveLink = document.createElement("A");
 
+        // set attributes and styles and whatever
+        retrievePopup.setAttribute('id', 'retrieve-popup');
+        retrievePopup.style.cssText = popupStyle;
+
+        retrieveContent.setAttribute('id', 'retrieve-content');
+        retrieveContent.style.cssText = contentStyle;
+
+        retrieveLinkDiv.setAttribute('id', 'retrieve-link');
+        retrieveLinkDiv.style.cssText = linkStyle;
+
+        retrieveLink.setAttribute('href', linkUrl);
+        retrieveLink.textContent = link;
+
+        // construct the popup element
+        retrieveLinkDiv.appendChild(retrieveLink);
+        retrieveContent.appendChild(retrieveContentText);
+
+        if (conf.closeButton) {
+            var retrieveClose = document.createElement("BUTTON");
+
+            retrieveClose.setAttribute('id', 'retrieve-close');
+            retrieveClose.textContent = 'close';
+            retrieveClose.style.cssText = closeStyle;
+
+            retrievePopup.appendChild(retrieveClose);
+
+            retrieveClose.onclick = function() {
+                document.body.removeChild(retrievePopup);
+            };
+        }
+
+        retrievePopup.appendChild(retrieveContent);
+        retrievePopup.appendChild(retrieveLinkDiv);
+
+
+        // add it to body
+        document.body.appendChild(retrievePopup);
     };
 
     // export our library
