@@ -100,7 +100,7 @@
     Retriever.prototype.retrieve = function() {
 
         // Now on mouseleave container event
-        var container = conf.container;
+        var container = that.defaults.container;
         container.onmouseleave = function(event) {
             that.popup();
         };

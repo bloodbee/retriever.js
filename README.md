@@ -6,7 +6,7 @@ Turn your lost visitors in new customers with this simple javascript library.
 
 ## Install
 
-Copy src/retriever.js into your /js directory.
+Copy src/index.js into your /js directory.
 
 Add it to your html file :
 
