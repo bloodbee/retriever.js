@@ -97,20 +97,12 @@
 
 
     // launch the retrieve function
-    Retriever.prototype.retrieve = function(config = null) {
-        let conf = {};
-        // initialize our retrieve
-        if (config === undefined || config === null) {
-            conf = that.defaults;
-        } else {
-            // merge configs
-            Object.assign(conf, config, that.defaults);
-        }
+    Retriever.prototype.retrieve = function() {
 
         // Now on mouseleave container event
         var container = conf.container;
         container.onmouseleave = function(event) {
-            that.popup(conf);
+            that.popup();
         };
 
     };
@@ -124,14 +116,12 @@
 
 
     // display popup
-    Retriever.prototype.popup = function(config = null) {
+    Retriever.prototype.popup = function() {
 
         // remove old popup
         that.close();
 
         var conf = that.defaults;
-        if (config)
-            conf = config;
 
         var popupStyle = '';
         for (var prop in conf.popupStyle) {
