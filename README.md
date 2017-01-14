@@ -35,13 +35,7 @@ Instanciate the Retriever class.
 
 ### Retriever.setConfig(config)
 
-Change retriever's config
-
-#### config
-
-Type: `Object`
-
-The config for the retriever class, you can specify the belowed keys :
+Change retriever's config, you can specify the belowed keys :
 
 ##### container
 
