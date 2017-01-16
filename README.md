@@ -6,12 +6,12 @@ Turn your lost visitors in new customers with this simple javascript library.
 
 ## Install
 
-Copy src/index.js into your /js directory.
+Copy src/retriever.min.js into your /js directory.
 
 Add it to your html file :
 
 ```
-<script src='/js/retriever.js'></script>
+<script src='/js/retriever.min.js'></script>
 ```
 
 And that's done !
