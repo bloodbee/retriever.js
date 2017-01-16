@@ -48,6 +48,7 @@
             'height': '250px',
             'background-color': 'white',
             'border': '1px solid black',
+            'z-index': '2'
         },
 
         closeButton: true,
@@ -84,6 +85,9 @@
         // control mobile popup
         mobile: true,
 
+        // control background blur style
+        blurred: true
+
 
     };
 
@@ -91,7 +95,7 @@
     Retriever.prototype.setConfig = function(config = null) {
         // initialize our retrieve
         if (config != undefined && config != null) {
-            that.defaults = config;
+            Object.assign(that.defaults, config, that.defaults);
         }
     };
 
@@ -110,8 +114,12 @@
     Retriever.prototype.close = function() {
         // remove old popup
         var oldPopup = document.getElementById('retrieve-popup');
-        if (oldPopup)
+        var backdrop = document.getElementById('backdrop');
+        if (oldPopup) {
+            if (backdrop)
+                document.body.removeChild(backdrop);
             document.body.removeChild(oldPopup);
+        }
     };
 
 
@@ -187,13 +195,25 @@
             retrievePopup.appendChild(retrieveClose);
 
             retrieveClose.onclick = function() {
-                document.body.removeChild(retrievePopup);
+                that.close();
             };
         }
 
         retrievePopup.appendChild(retrieveContent);
         retrievePopup.appendChild(retrieveLinkDiv);
 
+        // blur the background
+        if (conf.blurred) {
+            var backdrop = document.createElement("DIV");
+            backdrop.setAttribute('id', 'backdrop');
+            backdrop.style.zIndex = "1";
+            backdrop.style.background = "rgba(0,0,0,0.7)";
+            backdrop.style.position = "fixed";
+            backdrop.style.width = "100%";
+            backdrop.style.height = "100%";
+            document.body.appendChild(backdrop);
+
+        }
 
         // add it to body
         document.body.appendChild(retrievePopup);
