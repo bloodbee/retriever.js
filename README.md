@@ -188,7 +188,7 @@ Retriever.retrieve();
 ```
 
 The result is :
-![Example 1][[https://github.com/bloodbee/retriever.js/blob/master/img/example-1.png]]
+https://github.com/bloodbee/retriever.js/blob/master/img/example-1.png
 
 
 ## License

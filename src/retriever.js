@@ -92,7 +92,7 @@
     };
 
     // set config
-    Retriever.prototype.setConfig = function(config = null) {
+    Retriever.prototype.setConfig = function(config) {
         // initialize our retrieve
         if (config != undefined && config != null) {
             Object.assign(that.defaults, config, that.defaults);

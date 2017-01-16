@@ -2,7 +2,7 @@
   "name": "retriever.js",
   "version": "1.0.1",
   "description": "Turn your lost visitors in new customers with this simple javascript library.",
-  "main": "src/index.js",
+  "main": "src/retriever.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
