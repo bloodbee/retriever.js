@@ -137,7 +137,8 @@ Listen to the mouseleave event on the default settings container, and display th
 
 ### 1)
 
-`var Retriever = new Retriever();
+```
+var Retriever = new Retriever();
 
 Retriever.setConfig({
     popupStyle: {
@@ -183,10 +184,11 @@ Retriever.setConfig({
     link: "Use my coupon",
 });
 
-Retriever.retrieve();`
+Retriever.retrieve();
+```
 
 The result is :
-![Example 1](https://github.com/bloodbee/retriever.js/img/example-1.png)
+[[https://github.com/bloodbee/retriever.js/blob/master/img/example-1.png|alt=example-1]]
 
 
 ## License
